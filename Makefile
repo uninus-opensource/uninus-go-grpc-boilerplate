@@ -57,12 +57,14 @@ else
 endif
 
 migrate-up:
-	@$(foreach module, $(MODULES), cp extensions/migrate/*.sql $(TMP_DIR);)
-	@bin/migrate -source file://$(TMP_DIR) -database "postgres://$(POSTGRES_USER):$(POSTGRES_PASS)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DATABASE)?$(POSTGRES_QUERYSTRING)" $(POSTGRES_MIGRATEUP)
+	migrate -path extenstion/migrate -database "postgresql://root:root@localhost:5436/uninusdb?sslmode=disable" -verbose up
+#	@$(foreach module, $(MODULES), cp extensions/migrate/*.sql $(TMP_DIR);)
+#	@bin/migrate -source file://$(TMP_DIR) -database "postgres://$(POSTGRES_USER):$(POSTGRES_PASS)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DATABASE)?$(POSTGRES_QUERYSTRING)" $(POSTGRES_MIGRATEUP)
 
 migrate-down:
-	@$(foreach module, $(MODULES), cp extensions/migrate/*.sql $(TMP_DIR);)
-	@bin/migrate -source file://$(TMP_DIR) -database "postgres://$(POSTGRES_USER):$(POSTGRES_PASS)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DATABASE)?$(POSTGRES_QUERYSTRING)" $(POSTGRES_MIGRATEDOWN)
+	migrate -path extenstion/migrate -database "postgresql://root:root@localhost:5436/uninusdb?sslmode=disable" -verbose down
+#	@$(foreach module, $(MODULES), cp extensions/migrate/*.sql $(TMP_DIR);)
+#	@bin/migrate -source file://$(TMP_DIR) -database "postgres://$(POSTGRES_USER):$(POSTGRES_PASS)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(POSTGRES_DATABASE)?$(POSTGRES_QUERYSTRING)" $(POSTGRES_MIGRATEDOWN)
 
 migrate-force:
 	@$(foreach module, $(MODULES), cp extensions/migrate/*.sql $(TMP_DIR);)

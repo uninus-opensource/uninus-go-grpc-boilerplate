@@ -1,6 +1,22 @@
 # UNINUS GOLANG GRPC BOILERPLATE
 
+# How to run ?
+1. Clone this project with SSH or HTTPS
+    `git clone <url>`
 
+2. Create Database
+    `docker-compose up -d`
+
+3. Migrate table
+    `make migrate-up`
+
+4. Run Project
+    `make run-local`
+
+> If u want to edit config, go to `config/local.conf`
+
+
+## Basic Knowledge
 ### Software Pattern
 ![Screenshot from 2024-03-13 23-22-01](https://github.com/uninus-opensource/uninus-go-grpc-boilerplate/assets/93025581/8fdfff20-b96b-48a0-96f8-0611068dabaa)
 
